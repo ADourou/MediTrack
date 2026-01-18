@@ -5,6 +5,7 @@
 
 
 ## 🚀 Key Features
+* **Adaptive Multi-Device Design:** Seamlessly transitions between **Smartwatch**, **Smartphone**, and **Tablet** views, ensuring high accessibility for all user groups.
 * **Adherence Tracking:** Priority based monitoring (**Taken**, **Postponed**, **Missed**) for accurate health records.
 * **Smart Analytics:** Weekly and Monthly dashboards with visual progress bars and compliance ratios.
 * **Voice Assistant:** Integrated smartspeaker commands for hands free medication confirmation and help.
@@ -16,7 +17,6 @@
 * **Frontend:** Angular 17, TypeScript, SCSS.
 * **Deployment:** Docker & Docker Compose for containerization.
 * **Voice Integration:** Web Speech API.
-* **Reporting:** jsPDF & jspdf-autotable.
 
 
 
