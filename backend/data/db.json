@@ -1,0 +1,831 @@
+[
+  {
+    "id": "eleni",
+    "name": "Eleni Papadaki",
+    "profileImage": "assets/profiles/eleni_papadaki.png",
+    "age": 76,
+    "gender": "female",
+    "type": "elderly",
+    "familyIds": [],
+    "caregivers": [
+      {
+        "name": "Nasia Vasileiou",
+        "role": "Caregiver",
+        "image": "assets/caregiver1.png"
+      },
+      {
+        "name": "Martha Papadaki",
+        "role": "Emergency contact",
+        "image": "assets/caregiver2.png"
+      }
+    ],
+    "medications": [
+      {
+        "id": "med_lasix_am",
+        "name": "Lasix",
+        "condition": "Heart Pill",
+        "dosage": "20mg",
+        "time": "09:00",
+        "taken": false,
+        "canPostpone": false,
+        "maxPostponeHours": 0,
+        "image": "assets/meds/lasix.png"
+      },
+      {
+        "id": "med_norvasc",
+        "name": "Norvasc",
+        "condition": "Pressure Pill",
+        "dosage": "5mg",
+        "time": "14:00",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 2,
+        "image": "assets/meds/norvasc.jpg"
+      },
+      {
+        "id": "med_pressure_pm",
+        "name": "Pressure Pill",
+        "condition": "Hypertension",
+        "dosage": "5mg",
+        "time": "19:45",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 2,
+        "image": "assets/meds/norvasc.jpg"
+      },
+      {
+        "id": "med_lasix_pm",
+        "name": "Lasix",
+        "condition": "Heart Pill",
+        "dosage": "20mg",
+        "time": "21:00",
+        "taken": false,
+        "canPostpone": false,
+        "maxPostponeHours": 0,
+        "image": "assets/meds/lasix.png"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-01-14",
+        "stats": {
+          "total": 4,
+          "taken": 1,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Lasix",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-13",
+        "stats": {
+          "total": 4,
+          "taken": 3,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Lasix",
+            "status": "taken"
+          },
+          {
+            "time": "14:00",
+            "medName": "Norvasc",
+            "status": "taken"
+          },
+          {
+            "time": "20:00",
+            "medName": "Pressure Pill",
+            "status": "missed"
+          },
+          {
+            "time": "21:00",
+            "medName": "Lasix",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-12",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Lasix",
+            "status": "taken"
+          },
+          {
+            "time": "14:00",
+            "medName": "Norvasc",
+            "status": "taken"
+          },
+          {
+            "time": "20:00",
+            "medName": "Pressure Pill",
+            "status": "taken"
+          },
+          {
+            "time": "21:00",
+            "medName": "Lasix",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-11",
+        "stats": {
+          "total": 4,
+          "taken": 2,
+          "missed": 2,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Lasix",
+            "status": "taken"
+          },
+          {
+            "time": "14:00",
+            "medName": "Norvasc",
+            "status": "missed"
+          },
+          {
+            "time": "20:00",
+            "medName": "Pressure Pill",
+            "status": "missed"
+          },
+          {
+            "time": "21:00",
+            "medName": "Lasix",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-10",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-09",
+        "stats": {
+          "total": 4,
+          "taken": 3,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Lasix",
+            "status": "taken"
+          },
+          {
+            "time": "14:00",
+            "medName": "Norvasc",
+            "status": "taken"
+          },
+          {
+            "time": "21:00",
+            "medName": "Lasix",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-08",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-07",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-06",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-05",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      }
+    ]
+  },
+  {
+    "id": "maria",
+    "name": "Maria Kostaki",
+    "profileImage": "assets/profiles/maria_kostaki.png",
+    "age": 42,
+    "gender": "female",
+    "type": "parent",
+    "familyIds": [
+      "sofia",
+      "andreas"
+    ],
+    "medications": [
+      {
+        "id": "med_sideral_am",
+        "name": "Sideral Forte",
+        "condition": "Iron Deficiency",
+        "dosage": "1 tablet",
+        "time": "08:00",
+        "taken": true,
+        "canPostpone": true,
+        "maxPostponeHours": 4,
+        "image": "assets/meds/sideral_forte.png"
+      },
+      {
+        "id": "med_vitd_am",
+        "name": "Vitamin D",
+        "condition": "Vitamin D Deficiency",
+        "dosage": "1000 IU",
+        "time": "10:00",
+        "taken": true,
+        "canPostpone": true,
+        "maxPostponeHours": 6,
+        "image": "assets/meds/vitamin_d.jpg"
+      },
+      {
+        "id": "med_sideral_pm",
+        "name": "Sideral Forte",
+        "condition": "Iron Deficiency",
+        "dosage": "1 tablet",
+        "time": "19:53",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 4,
+        "image": "assets/meds/sideral_forte.png"
+      },
+      {
+        "id": "med_vitd_pm",
+        "name": "Vitamin D",
+        "condition": "Vitamin D Deficiency",
+        "dosage": "1000 IU",
+        "time": "22:00",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 6,
+        "image": "assets/meds/vitamin_d.jpg"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-01-14",
+        "stats": {
+          "total": 4,
+          "taken": 2,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "08:00",
+            "medName": "Sideral Forte",
+            "status": "taken"
+          },
+          {
+            "time": "10:00",
+            "medName": "Vitamin D",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-13",
+        "stats": {
+          "total": 4,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 1
+        },
+        "logs": [
+          {
+            "time": "08:00",
+            "medName": "Sideral Forte",
+            "status": "taken"
+          },
+          {
+            "time": "10:00",
+            "medName": "Vitamin D",
+            "status": "postponed"
+          },
+          {
+            "time": "18:00",
+            "medName": "Sideral Forte",
+            "status": "taken"
+          },
+          {
+            "time": "22:00",
+            "medName": "Vitamin D",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-12",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-11",
+        "stats": {
+          "total": 4,
+          "taken": 2,
+          "missed": 2,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "08:00",
+            "medName": "Sideral Forte",
+            "status": "taken"
+          },
+          {
+            "time": "18:00",
+            "medName": "Sideral Forte",
+            "status": "missed"
+          },
+          {
+            "time": "22:00",
+            "medName": "Vitamin D",
+            "status": "missed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-10",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 2
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-09",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-08",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-07",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-06",
+        "stats": {
+          "total": 4,
+          "taken": 3,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-05",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      }
+    ]
+  },
+  {
+    "id": "sofia",
+    "name": "Sofia Lianou",
+    "profileImage": "assets/profiles/sofia_lianou.png",
+    "age": 9,
+    "gender": "female",
+    "type": "child",
+    "familyIds": [],
+    "caregivers": [
+      {
+        "name": "Maria Kostaki",
+        "role": "Mother",
+        "image": "assets/profiles/maria_kostaki.png"
+      },
+      {
+        "name": "Andreas Lianos",
+        "role": "Father",
+        "image": "assets/profiles/andreas.png"
+      }
+    ],
+    "medications": [
+      {
+        "id": "med_advent_am",
+        "name": "Advent Syrup",
+        "condition": "Antibiotic for Mild bronchitis",
+        "dosage": "5ml",
+        "time": "08:00",
+        "taken": true,
+        "canPostpone": true,
+        "maxPostponeHours": 1,
+        "image": "assets/meds/advent.jpg"
+      },
+      {
+        "id": "med_cough_am",
+        "name": "Cough Syrup",
+        "condition": "Mild bronchitis, chesty cough",
+        "dosage": "1 spoon",
+        "time": "09:00",
+        "taken": true,
+        "canPostpone": true,
+        "maxPostponeHours": 2,
+        "image": "assets/meds/cough-syrup.jpg"
+      },
+      {
+        "id": "med_advent_pm",
+        "name": "Advent Syrup",
+        "condition": "Antibiotic for Mild bronchitis",
+        "dosage": "5ml",
+        "time": "20:00",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 1,
+        "image": "assets/meds/advent.jpg"
+      },
+      {
+        "id": "med_cough_pm",
+        "name": "Cough Syrup",
+        "condition": "Mild bronchitis, chesty cough",
+        "dosage": "1 spoon",
+        "time": "23:00",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 2,
+        "image": "assets/meds/cough-syrup.jpg"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-01-14",
+        "stats": {
+          "total": 4,
+          "taken": 2,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "08:00",
+            "medName": "Advent",
+            "status": "taken"
+          },
+          {
+            "time": "09:00",
+            "medName": "Cough Syrup",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-13",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-12",
+        "stats": {
+          "total": 4,
+          "taken": 3,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "23:00",
+            "medName": "Cough Syrup",
+            "status": "missed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-11",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 1
+        },
+        "logs": [
+          {
+            "time": "21:00",
+            "medName": "Cough Syrup",
+            "status": "postponed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-10",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-09",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-08",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-07",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-06",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-05",
+        "stats": {
+          "total": 4,
+          "taken": 4,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      }
+    ]
+  },
+  {
+    "id": "andreas",
+    "name": "Andreas Michas",
+    "profileImage": "assets/profiles/andreas.png",
+    "age": 23,
+    "gender": "male",
+    "type": "young_adult",
+    "familyIds": [],
+    "medications": [
+      {
+        "id": "med_inhaler",
+        "name": "Asthma Inhaler",
+        "condition": "Asthma",
+        "dosage": "2 puffs",
+        "time": "08:00",
+        "taken": true,
+        "canPostpone": false,
+        "maxPostponeHours": 0,
+        "image": "assets/meds/asthma.jpg"
+      },
+      {
+        "id": "med_vitb_am",
+        "name": "Vitamin B Complex",
+        "condition": "Allergies",
+        "dosage": "1 pill",
+        "time": "09:00",
+        "taken": true,
+        "canPostpone": true,
+        "maxPostponeHours": 8,
+        "image": "assets/meds/vitamin_b.png"
+      },
+      {
+        "id": "med_vitb_pm",
+        "name": "Vitamin B Complex",
+        "condition": "Allergies",
+        "dosage": "1 pill",
+        "time": "17:00",
+        "taken": false,
+        "canPostpone": true,
+        "maxPostponeHours": 8,
+        "image": "assets/meds/vitamin_b.png"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-01-14",
+        "stats": {
+          "total": 3,
+          "taken": 2,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "08:00",
+            "medName": "Asthma Inhaler",
+            "status": "taken"
+          },
+          {
+            "time": "09:00",
+            "medName": "Vitamin B",
+            "status": "taken"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-13",
+        "stats": {
+          "total": 3,
+          "taken": 2,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "17:00",
+            "medName": "Vitamin B",
+            "status": "missed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-12",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-11",
+        "stats": {
+          "total": 3,
+          "taken": 2,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "17:00",
+            "medName": "Vitamin B",
+            "status": "missed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-10",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-09",
+        "stats": {
+          "total": 3,
+          "taken": 2,
+          "missed": 1,
+          "postponed": 0
+        },
+        "logs": [
+          {
+            "time": "09:00",
+            "medName": "Vitamin B",
+            "status": "missed"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-08",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-07",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-06",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      },
+      {
+        "date": "2026-01-05",
+        "stats": {
+          "total": 3,
+          "taken": 3,
+          "missed": 0,
+          "postponed": 0
+        },
+        "logs": []
+      }
+    ]
+  }
+]

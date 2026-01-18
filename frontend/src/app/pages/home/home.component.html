@@ -1,0 +1,610 @@
+<div class="tablet-layout">
+  <div class="p1-container {{userType}}">
+
+    <header class="p1-header">
+      <div class="left-part">
+        <div class="menu-icon" (click)="toggleMenu()">☰</div>
+        <img class="logo" src="assets/logo_icon.png" alt="MediTrack Logo">
+        <span class="app-name">MediTrack</span>
+      </div>
+
+      <div class="right-part">
+        <span class="user-name">{{userName}}</span>
+        <img *ngIf="userImage" [src]="userImage" class="Persona" alt="Profile">
+      </div>
+    </header>
+
+
+    <!--date ,Ask me , sos-->
+    <section class="p1-top-row">
+      <div class="date-box">
+        <img src="assets/date.png" class="date-icon" alt="date">
+        {{mockCurrentTime | date: 'EEEE, MMM d'}} &nbsp;&nbsp; {{mockCurrentTime | date: 'HH:mm'}}
+      </div>
+
+      <div class="actions">
+        <button class="askMe-button" (click)="triggerAskMe()"> <img src="assets/microphone 1.png" class="button-icon"
+            alt="mic">Ask Me</button>
+        <button class="sos-button" (click)="triggerSOS()" *ngIf="userType !=='child'">S.O.S</button>
+      </div>
+    </section>
+
+    <!--next-pill section CHILD-->
+    <section class="next-pill-card child-layout"
+      *ngIf="userType === 'child' && nextPill && !showConfirmation && !showSuccessmessage &&!showHelp">
+
+      <div class="top-timer">
+        <img src="assets/clock.png" alt="clock" width="20">{{timeRemaining}}
+      </div>
+
+      <div class="center-info">
+        <h1 class="med-title">{{nextPill.name}}</h1>
+        <span class="med-dose-text">{{nextPill.dosage}}</span>
+      </div>
+
+      <div class="bottom-row">
+        <div class="mascot-container">
+          <div class="speech-bubble">Don't forget your meds!</div>
+          <img src="assets/alien.png" class="mascot-img" alt="alien">
+        </div>
+
+        <div class="med-icon-container">
+          <img [src]="nextPill.image" class="big-pill-img" alt="medicine">
+        </div>
+
+      </div>
+
+    </section>
+
+    <!--next pill section-->
+    <section class="next-pill-card"
+      *ngIf="userType !=='child' && nextPill && !showConfirmation && !showSuccessmessage && !showHelp">
+
+      <div class="pill-time-row">
+        <span class="timer-badge" [class.overdue]="isOverdue">🕒 {{timeRemaining}}</span>
+      </div>
+
+      <div class="pill-name-row">
+        <h2 class="pill-info-text">{{nextPill.name}} {{nextPill.dosage}}</h2>
+      </div>
+
+      <div class="pill-image-row">
+        <img [src]="nextPill.image" alt="Pill" class="med-photo-fixed">
+      </div>
+
+    </section>
+
+
+    <section class="confirm-card" *ngIf="showConfirmation">
+      <div class="info">
+        <span class="label">Time for you pill: </span>
+        <span *ngIf="nextPill" class="pill-info">{{nextPill.name}} {{nextPill.dosage}}</span>
+        <img *ngIf="nextPill" [src]="nextPill.image" class="pill-image">
+      </div>
+
+      <div class="action-confirm">
+        <p class="Big-question" *ngIf="nextPill">
+          Are you sure you took <strong>{{nextPill.name}} {{nextPill.dosage}}</strong> for
+          <strong>{{nextPill.time}}</strong>
+        </p>
+
+        <div class="buttons-confirmation">
+          <button class="button-yes" (click)="confirmTaken()">Yes, I took it</button>
+          <button class="button-no" (click)="confirmLater()">{{userType === 'child' ? 'Later' : 'No, check again
+            later'}}</button>
+          <button class="button-help"> <img src="assets/microphone 1.png" class="button-icon" alt="mic">I need
+            help</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="help-response-card" *ngIf="showHelp">
+
+      <div class="help-med-info" *ngIf="nextPill">
+        <span class="label">Time for your pill : </span>
+        <span class="pill-details">{{nextPill.name}} {{nextPill.dosage}}</span>
+        <img [src]="nextPill.image" class="mini-pill-img" alt="pill">
+      </div>
+
+      <div class="user-query-row">
+        <span class="label">You asked help for : </span>
+        <div class="query-box">
+          {{helpQuery}}
+        </div>
+      </div>
+
+      <div class="alert-box">
+
+        <div *ngIf="isChild" style="text-align: center; margin-bottom: 10px;">
+          <img src="assets/alien.png" style="width: 80px; height: auto;">
+          <h3>Don't worry {{userName.split(' ')[0]}}. Calling Mom & Dad!</h3>
+        </div>
+
+        <h3 *ngIf="!isChild">Don't worry {{userName.split(' ')[0]}}. Help is on the way. I'm alerting: </h3>
+        <div class="caregivers-list">
+
+          <div class="caregiver-badge" *ngFor="let person of caregivers">
+            <img [src]="person.image" class="caregiver-img" alt="caregiver">
+
+            <div class="caregiver-info">
+              <span class="c-name">{{person.name}}</span>
+              <span class="c-role">{{person.role}}</span>
+            </div>
+          </div>
+
+          <p *ngIf="caregivers.length === 0" style="color: red; font-weight: bold;">
+            No emergency contacts found!
+          </p>
+
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <section class="success-card" *ngIf="showSuccessmessage">
+      <h1> BRAVO! <img src="assets\star_of_the_day.png" class="bravo-img" alt="star"> </h1>
+      <p>You are a superhero! </p>
+    </section>
+
+    <section class="child-missions"
+      *ngIf="!showConfirmation && !showSuccessmessage && userType === 'child' &&!showHelp">
+      <h2>MY DAILY MISSIONS <img src="assets/ufo.png" alt="ufo" class="title-ufo"> </h2>
+      <div class="missions-list">
+        <div *ngFor="let med of medications" class="mission-card">
+
+          <div class="mission-icon">
+            <img *ngIf="med.taken" src="assets/accept.png" alt="done">
+            <img *ngIf="!med.taken" src="assets/dart.png" alt="target">
+          </div>
+
+          <div class="mission-name">{{med.name}}</div>
+
+          <div class="mission-status" [class.taken]="med.taken" [class.overdue]="!med.taken && ismedOverdue(med.time)">
+            <ng-container *ngIf="med.taken">
+              Taken <img src="assets/star.png" alt="star" class="status-star">
+            </ng-container>
+            <ng-container *ngIf="!med.taken">
+              <span *ngIf="ismedOverdue(med.time)">Taken</span>
+              <span *ngIf="!ismedOverdue(med.time)">At {{med.time}}</span>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!--pills of the day-->
+    <section class="p1-pills-day" *ngIf="!showConfirmation && userType !== 'child' && !showHelp">
+      <h2>Pills of the day</h2>
+
+      <div class="pill-list">
+        <div *ngFor="let med of medications" class="pill-row">
+          <span class="time">{{med.time}}</span>
+          <span class="name">{{med.name}}</span>
+          <span class="count">{{med.dosage}}</span>
+
+          <span [class]="'pill-status ' + (med.taken ? 'taken' : 'notyet')">
+            {{med.taken ? 'Taken' : 'Not yet'}}
+          </span>
+
+          <p *ngIf="medications.length === 0 && userName!== 'Loading...'" style="text-align: center;">No medications
+            found.</p>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!--sos button-->
+    <div class="sos-overlay" *ngIf="showSOS">
+      <div class="sos-card">
+        <h2>CALLING YOUR <br> EMERGENCY <br> CONTACTS</h2>
+        <div class="countdown-text">
+          IN <span class="seconds">{{sosCountdown}}</span> SECONDS
+        </div>
+        <button class="undo-button" (click)="cancelSOS()">
+          <div class="undo">
+            <span>UNDO</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="notification-overlay" *ngIf="showNotification && notificationData">
+      <div class="notification-card">
+        <div class="notification-header">
+          <div class="logo-circle">
+            <img src="assets/logo_icon.png" alt="logo" class="header-icon">
+          </div>
+          <span class="header-time">{{notificationData.time}}</span>
+        </div>
+        <div class="notification-body">
+          <h2>Time for your pill:</h2>
+          <h1 class="med-name">{{notificationData.name}}</h1>
+          <div class="med-img-container">
+            <img *ngIf="notificationData.image" [src]="notificationData.image" alt="medication">
+          </div>
+        </div>
+        <div class="notification-footer">
+          <button class="button-taken" (click)="showNotification = false; showConfirmation = true">
+            I took it
+          </button>
+          <button class="button-help" (click)="showNotification = false; triggerAskMe()">
+            <img src="assets/microphone 1.png" alt="mic" class="button-icon">
+            I need help
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="mobile-layout">
+  <ng-container *ngIf="currentView === 'home'">
+    <div class="mobile-container" [class.senior-mode]="isSenior" [class.child-mode]="isChild">
+
+      <header class="app-header">
+        <div class="header-left" (click)="toggleMenu()">
+          <span class="material-icons">☰</span>
+        </div>
+
+        <div class="header-center">
+          <img src="assets/logo_icon.png" class="logo-icon">
+          <img src="assets/logo_letters.png" class="logo-text">
+        </div>
+
+        <div class="header-right">
+          <img [src]="getProfileImage()" class="profile-pic">
+        </div>
+      </header>
+
+      <div *ngIf="isLoading" style="text-align: center; padding-top: 50px; color: #666;">
+        Loading data...
+      </div>
+
+      <div class="main-content" *ngIf="user">
+
+        <div class="notification-card" *ngIf="nextPill">
+
+          <div class="child-clock-wrapper" *ngIf="isChild">
+            <img src="assets/clock.png" class="child-clock-icon" alt="Time">
+            <span class="child-time-text">{{ timeRemaining }}</span>
+          </div>
+
+          <div class="notification-header" *ngIf="!isChild">
+            <span class="next-label">Next pill :</span>
+            <span class="time-label">
+              <span class="clock-icon">🕒</span> {{ timeRemaining }}
+            </span>
+          </div>
+
+          <div class="notification-body">
+
+            <h2 class="med-name">{{ nextPill.name }}</h2>
+            <div class="med-dosage">{{ nextPill.dosage }}</div>
+
+            <div class="med-condition" *ngIf="!isChild">{{ nextPill.condition }}</div>
+
+            <div class="child-bottom-row" *ngIf="isChild">
+
+              <div class="mascot-area">
+                <div class="speech-bubble">
+                  Don't forget <br> your meds!
+                </div>
+                <img src="assets/alien.png" class="mascot-img" alt="Mascot">
+              </div>
+
+              <div class="med-image-wrapper-child">
+                <img *ngIf="nextPill.image" [src]="nextPill.image" class="med-img-child">
+              </div>
+
+            </div>
+            <div class="med-image-wrapper" *ngIf="!isChild">
+              <img *ngIf="nextPill.image" [src]="nextPill.image" class="med-img">
+            </div>
+
+            <!-- <button class="got-it-btn" *ngIf="!isChild" (click)="dismissNotification()">Got it</button> -->
+          </div>
+        </div>
+
+        <div class="schedule-card">
+
+          <div class="schedule-header">
+            <ng-container *ngIf="isChild">
+              My Daily Missions
+              <img src="assets/ufo.png" style="width: 28px; height: 28px; vertical-align: text-bottom;" alt="UFO">
+            </ng-container>
+
+            <ng-container *ngIf="!isChild">
+              Pills of the day:
+            </ng-container>
+          </div>
+
+          <div class="separator-line" *ngIf="!isChild"></div>
+
+          <div class="schedule-list">
+
+            <div class="schedule-row" *ngFor="let med of user.medications">
+
+              <div class="row-left">
+                <span *ngIf="isChild" style="margin-right: 10px; display: flex; align-items: center;">
+                  <img *ngIf="med.taken" src="assets/accept.png" style="width: 24px; height: 24px;" alt="Done">
+                  <img *ngIf="!med.taken" src="assets/dart.png" style="width: 24px; height: 24px;" alt="Goal">
+                </span>
+
+                <span *ngIf="!isChild" class="green-dot"></span>
+
+                <span class="list-med-name" style="color: black !important;">
+                  {{ med.name }}
+                </span>
+              </div>
+
+              <div class="row-right" [ngClass]="getScheduleStatus(med).cssClass"
+                style="display: flex; align-items: center; gap: 5px;">
+                {{ getScheduleStatus(med).text }}
+                <img *ngIf="isChild && med.taken" src="assets/star.png" style="width: 20px; height: 20px;" alt="Star">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="pharmacy-card" *ngIf="!isSenior && !isChild" (click)="onSearchPharmacies()">
+          <span class="pharmacy-icon">🔍</span>
+          <span class="pharmacy-text">Search Pharmacies near me</span>
+        </div>
+
+        <div class="tip-card" *ngIf="!isChild">
+          <div class="tip-left">
+            <img src="assets/idea.png" class="tip-img" alt="Idea">
+          </div>
+          <div class="tip-right">
+            Don’t forget to drink enough water with your vitamins!
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-overlay" *ngIf="showNotification && notificationData">
+        <div class="notification-modal">
+          <div class = "notfication-header1">
+            <span>Time for your medicine!</span>
+          </div>
+
+          <div class="notificaton-content">
+            <h2 class="notification-title">{{ notificationData.name }}</h2>
+            <p class="notification-dosage">{{ notificationData.dosage }}</p>
+            <p class="notification-time">{{ notificationData.time }}</p>
+
+          </div>
+          <div class="notification-action">
+            <button class="popup-button green-button" (click)="confirmTaken()">
+              Take it now
+            </button>
+            <button class="popup-button orange-button" (click)="snoozeNotification()">
+              Postpone
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="currentView === 'statistics'">
+    <header class="app-header">
+      <div class="header-left" (click)="toggleMenu()">
+        <span class="material-icons">☰</span>
+      </div>
+      <div class="header-center">
+        <img src="assets/logo_icon.png" class="logo-icon">
+        <img src="assets/logo_letters.png" class="logo-text">
+      </div>
+      <div class="header-right">
+        <img [src]="getProfileImage()" class="profile-pic">
+      </div>
+    </header>
+
+    <div class="stats-mobile-wrapper">
+      <div class="stats-row">
+        <button [class.btn-active]="selectedTime === 'weekly'" [class.btn-inactive]="selectedTime !== 'weekly'"
+          (click)="selectedTime = 'weekly'">Weekly progress</button>
+        <button [class.btn-active]="selectedTime === 'monthly'" [class.btn-inactive]="selectedTime !== 'monthly'"
+          (click)="selectedTime = 'monthly'">Monthly progress</button>
+      </div>
+
+      <div class="stats-row">
+        <button [class.btn-active]="selectedStat === 'missed'" [class.btn-inactive]="selectedStat !== 'missed'"
+          (click)="selectedStat = 'missed'">Missed doses</button>
+        <button [class.btn-active]="selectedStat === 'postponed'" [class.btn-inactive]="selectedStat !== 'postponed'"
+          (click)="selectedStat = 'postponed'">Postponed doses</button>
+      </div>
+
+      <div class="stats-main-card">
+
+        <div class="card-inner-header">
+          <div class="card-title-row">
+            <span class="card-title">{{ selectedTime | titlecase }} - {{ selectedStat | titlecase }}</span>
+
+            <div class="export-container">
+              <span class="dots" (click)="toggleExportMenu()">⋮</span>
+              <div class="export-menu" *ngIf="showExportMenu">
+                <div class="export-item" (click)="exportToCSV()">
+                  <img src="assets/file.png" class="export-icon">
+                  <span>Export as CSV</span>
+                </div>
+
+                <div class="export-item" (click)="exportToPDF()">
+                  <img src="assets/file.png" class="export-icon"> <span>Export as PDF</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="date-nav">
+            <span class="nav-arrow" (click)="changeDateRange(-1)">‹</span>
+            <span class="date-range">{{ getDateRangeText() }}</span>
+            <span class="nav-arrow" (click)="changeDateRange(1)">›</span>
+          </div>
+        </div>
+
+        <div class="medications-combined-list">
+          <div class="med-section" *ngFor="let med of getMedicationStats(); let last = last">
+
+            <h4 class="internal-med-title">{{ med.name }}</h4>
+
+            <div class="progress-list">
+              <ng-container *ngIf="selectedTime === 'weekly'">
+                <div class="progress-item" *ngFor="let day of med.history">
+                  <span class="day-label">{{ day.dayLabel }}</span>
+                  <div class="bars">
+                    <ng-container *ngIf="day.bars.length > 0">
+                      <div *ngFor="let status of day.bars" class="bar" [class.full]="status === 'taken'"
+                        [class.empty]="status === 'missed' || status === 'postponed'"
+                        [class.not-recorded]="status === 'none'">
+                      </div>
+                    </ng-container>
+
+                    <div *ngIf="day.bars.length === 0" class="bar empty" style="opacity: 0.3;"></div>
+                  </div>
+                  <span class="ratio-compact">
+                    <ng-container [ngSwitch]="selectedStat">
+
+                      <span *ngSwitchCase="'missed'" [style.color]="day.ratio !== '0' ? '#e74c3c' : '#999'">
+                        {{ day.ratio }} <small>✖</small>
+                      </span>
+
+                      <span *ngSwitchCase="'postponed'" [style.color]="day.ratio !== '0' ? '#f39c12' : '#999'">
+                        {{ day.ratio }} <small>⏳</small>
+                      </span>
+
+                      <span *ngSwitchDefault>
+                        {{ day.ratio }}
+                      </span>
+
+                    </ng-container>
+                  </span>
+                </div>
+              </ng-container>
+
+              <ng-container *ngIf="selectedTime === 'monthly'">
+                <div class="month-item" *ngFor="let week of getMonthlyAggregatedStats(med)">
+                  <div class="month-row-info">
+                    <span class="week-label">{{ week.label }}</span>
+                    <span class="week-percentage">{{ week.percentage }}%</span>
+                  </div>
+                  <div class="progress-bar-container">
+                    <div class="progress-fill" [style.width.%]="week.percentage"></div>
+                  </div>
+                  <div class="month-ratio-text">{{ week.taken }} / {{ week.total }} doses</div>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="med-separator" *ngIf="!last"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+
+
+</div>
+
+
+<div class="smartwatch-layout">
+
+  <div class="watch-container-row">
+
+    <div class="watch-frame">
+      <div class="watch-screen">
+
+        <div class="w-slide notification-slide" *ngIf="watchScreen === 'notification'">
+          <div class="w-header">Time for medicine:</div>
+
+          <div class="w-content" *ngIf="nextPill; else noPills">
+            <div class="w-med-name">{{ nextPill.name }}</div>
+            <div class="w-med-dose">{{ nextPill.dosage }}</div>
+            <div class="w-time">
+              <span class="material-icons tiny">schedule</span> {{ nextPill.time }}
+            </div>
+          </div>
+          <ng-template #noPills>
+            <div class="w-content">
+              <div class="w-med-name">No meds pending!</div>
+            </div>
+          </ng-template>
+
+          <div class="w-actions" *ngIf="nextPill">
+            <button class="w-btn green" (click)="confirmTaken()">Took it</button>
+            <button class="w-btn orange" (click)="confirmLater()">Check later</button>
+          </div>
+        </div>
+
+        <div class="w-slide schedule-slide" *ngIf="watchScreen === 'schedule'">
+          <div class="w-title-bar">Today's schedule</div>
+          <div class="w-list">
+            <div class="w-item" *ngFor="let med of medications">
+              <span class="wi-time">{{ med.time }}</span>
+              <span class="wi-name">{{ med.name }}</span>
+              <span *ngIf="med.taken" style="color:green">✔</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-slide sos-slide" *ngIf="watchScreen === 'sos'">
+          <div class="w-alert-header">WARNING</div>
+          <div class="w-alert-msg">
+            Your oxygen levels are low.<br>
+            Use your <b>inhaler</b>.
+          </div>
+          <button class="w-btn red-alert" (click)="triggerSOS()">SOS CALL</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Menu -->
+<div class="side-menu-overlay" [class.active]="showMenu">
+  <div class="menu-content">
+
+    <div class="close-menu" (click)="toggleMenu()">✕</div>
+
+    <ul class="menu-list">
+      <li (click)="setView('home')">
+        <img src="assets/schedule.png" class="menu-item-icon" alt="Schedule">
+        <span>My Schedule</span>
+      </li>
+      <li (click)="setView('statistics')">
+        <img src="assets/analytics.png" class="menu-item-icon" alt="Statistics">
+        <span>Statistics</span>
+      </li>
+      <li (click)="toggleMenu()">
+        <img src="assets/family.png" class="menu-item-icon" alt="Family">
+        <span>My Family</span>
+      </li>
+      <li (click)="toggleMenu()">
+        <img src="assets/cogwheel.png" class="menu-item-icon" alt="Settings">
+        <span>Settings</span>
+      </li>
+      <li class="logout-item" (click)="toggleMenu()">
+        <img src="assets/check-out.png" class="menu-item-icon" alt="Logout">
+        <span>Logout</span>
+      </li>
+    </ul>
+
+  </div>
+</div>

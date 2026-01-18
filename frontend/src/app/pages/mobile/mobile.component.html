@@ -1,0 +1,123 @@
+<div class="mobile-container" [class.senior-mode]="isSenior" [class.child-mode]="isChild">
+
+  <header class="app-header">
+    <div class="header-left">
+      <span class="material-icons">☰</span>
+    </div>
+
+    <div class="header-center">
+      <img src="assets/logo_icon.png" class="logo-icon">
+      <img src="assets/logo_letters.png" class="logo-text">
+    </div>
+
+    <div class="header-right">
+      <img [src]="getProfileImage()" class="profile-pic">
+    </div>
+  </header>
+
+  <div *ngIf="isLoading" style="text-align: center; padding-top: 50px; color: #666;">
+    Loading data...
+  </div>
+
+  <div class="main-content" *ngIf="user">
+
+    <div class="notification-card" *ngIf="nextMedication">
+
+      <div class="child-clock-wrapper" *ngIf="isChild">
+        <img src="assets/clock.png" class="child-clock-icon" alt="Time">
+        <span class="child-time-text">{{ timeDisplay }}</span>
+      </div>
+
+      <div class="notification-header" *ngIf="!isChild">
+        <span class="next-label">Next pill :</span>
+        <span class="time-label">
+          <span class="clock-icon">🕒</span> {{ timeDisplay }}
+        </span>
+      </div>
+
+      <div class="notification-body">
+        
+        <h2 class="med-name">{{ nextMedication.name }}</h2>
+        <div class="med-dosage">{{ nextMedication.dosage }}</div>
+        
+        <div class="med-condition" *ngIf="!isChild">{{ nextMedication.condition }}</div>
+
+        <div class="child-bottom-row" *ngIf="isChild">
+          
+          <div class="mascot-area">
+            <div class="speech-bubble">
+              Don't forget <br> your meds!
+            </div>
+            <img src="assets/alien.png" class="mascot-img" alt="Mascot">
+          </div>
+
+          <div class="med-image-wrapper-child">
+             <img *ngIf="nextMedication.image" [src]="nextMedication.image" class="med-img-child">
+          </div>
+
+        </div>
+        <div class="med-image-wrapper" *ngIf="!isChild">
+          <img *ngIf="nextMedication.image" [src]="nextMedication.image" class="med-img">
+        </div>
+
+        <button class="got-it-btn" *ngIf="!isChild" (click)="dismissNotification()">Got it</button>
+      </div>
+    </div>
+
+    <div class="schedule-card">
+
+      <div class="schedule-header">
+        <ng-container *ngIf="isChild">
+          My Daily Missions
+          <img src="assets/ufo.png" style="width: 28px; height: 28px; vertical-align: text-bottom;" alt="UFO">
+        </ng-container>
+
+        <ng-container *ngIf="!isChild">
+          Pills of the day:
+        </ng-container>
+      </div>
+
+      <div class="separator-line" *ngIf="!isChild"></div>
+
+      <div class="schedule-list">
+
+        <div class="schedule-row" *ngFor="let med of user.medications">
+
+          <div class="row-left">
+            <span *ngIf="isChild" style="margin-right: 10px; display: flex; align-items: center;">
+              <img *ngIf="med.taken" src="assets/accept.png" style="width: 24px; height: 24px;" alt="Done">
+              <img *ngIf="!med.taken" src="assets/dart.png" style="width: 24px; height: 24px;" alt="Goal">
+            </span>
+
+            <span *ngIf="!isChild" class="green-dot"></span>
+
+            <span class="list-med-name" style="color: black !important;">
+              {{ med.name }}
+            </span>
+          </div>
+
+          <div class="row-right" [ngClass]="getScheduleStatus(med).cssClass"
+            style="display: flex; align-items: center; gap: 5px;">
+            {{ getScheduleStatus(med).text }}
+            <img *ngIf="isChild && med.taken" src="assets/star.png" style="width: 20px; height: 20px;" alt="Star">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="pharmacy-card" *ngIf="!isSenior && !isChild" (click)="onSearchPharmacies()">
+      <span class="pharmacy-icon">🔍</span>
+      <span class="pharmacy-text">Search Pharmacies near me</span>
+    </div>
+
+    <div class="tip-card" *ngIf="!isChild">
+      <div class="tip-left">
+        <img src="assets/idea.png" class="tip-img" alt="Idea">
+      </div>
+      <div class="tip-right">
+        Don’t forget to drink enough water with your vitamins!
+      </div>
+    </div>
+  </div>
+</div>
